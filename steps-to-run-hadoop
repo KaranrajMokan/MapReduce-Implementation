@@ -1,0 +1,33 @@
+brew install hadoop
+
+hadoop version
+
+/usr/local/Cellar/hadoop/3.3.0/libexec/sbin/
+
+hadoop fs -mkdir /user
+hadoop fs -mkdir /user/Hadoop
+hadoop fs -mkdir /user/Hadoop/MapReduce
+
+hdfs dfs -put /Users/karanrajmokan/Desktop/MapReduce/household_power_consumption.txt /user/Hadoop/MapReduce/
+
+hdfs --daemon start datanode
+
+/usr/local/Cellar/hadoop/3.3.0/libexec/etc/hadoop
+
+rm -rf /tmp/
+
+/usr/local/Cellar/hadoop/3.3.0/libexec/share/hadoop/tools/lib/hadoop-streaming-3.3.0.jar
+
+
+------------------------------------RUNNING OUTPUT-------------------------------------
+
+
+hadoop jar /usr/local/Cellar/hadoop/3.3.0/libexec/share/hadoop/tools/lib/hadoop-streaming-3.3.0.jar -file /Users/karanrajmokan/Desktop/MapReduce/mapper.py -mapper mapper.py -file /Users/karanrajmokan/Desktop/MapReduce/reducer.py -reducer reducer.py -input /user/Hadoop/MapReduce/household_power_consumption.txt -output /user/Hadoop/MapReduce/maxVoltages
+
+hdfs dfs -ls /user/Hadoop/MapReduce/maxVoltages
+
+hdfs dfs -get /user/Hadoop/MapReduce/maxVoltages/part-00000 /Users/karanrajmokan/Desk
+top/MapReduce
+
+
+
